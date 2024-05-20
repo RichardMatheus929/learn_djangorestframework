@@ -20,8 +20,8 @@ from django.urls import path
 from rest_framework import routers
 from core.api.viewsets import PontosTuristicosViewset
 
-router = routers.DefaultRouter()
-router.register(r'pontoturistico',PontosTuristicosViewset)
+router = routers.DefaultRouter() 
+router.register(r'pontoturistico',PontosTuristicosViewset) #Criando a rota do pontosturisticos
 
 urlpatterns = [
     path('',include(router.urls)),

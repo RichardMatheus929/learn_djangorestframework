@@ -12,4 +12,4 @@ class Enderecos(models.Model):
 
 
     def __str__(self) -> str:
-        return str(self.pais) + " " + str(self.estado)
+        return str(self.rua_ou_bairro) + " " + str(self.estado)
