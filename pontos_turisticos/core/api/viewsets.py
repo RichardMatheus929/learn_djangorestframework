@@ -1,9 +1,20 @@
 from rest_framework.viewsets import ModelViewSet
 from core.models import PontoTuristico
 from .serializers import PontoTuristicoSerializer
+from rest_framework import filters
 
 class PontosTuristicosViewset(ModelViewSet):
     serializer_class = PontoTuristicoSerializer
+
+    #search=nome
+    filter_backends = [filters.SearchFilter]
+    search_fields = [
+        '$id',  #$ sem sensitive case
+        '$nome',
+        '$descricao',
+        '$aprovado',
+        '$avaliacao__nota' #Pesquisando dentro de Pontos_turisticos a chave nota da chave estrangeria avaliacao
+        ]
 
     def get_queryset(self):
         id = self.request.query_params.get('id', None)
